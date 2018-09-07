@@ -14,8 +14,10 @@ public class Test {
             System.out.println(inf.getAge());
             inf.setAge("20");
             inf.saveNew();
+            inf.loader();
             System.out.println(inf.getAge());
-
+            System.out.println("------------------------------------------------------");
+            System.out.println(inf.getAllInfo());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

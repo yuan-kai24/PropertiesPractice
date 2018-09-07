@@ -17,7 +17,7 @@ public class Information {
     }
 
     public void loader()
-    {
+    {//读取
         pr = new Properties();
         try {
             buf = new BufferedReader(new InputStreamReader(new FileInputStream(fl), "GBK"));
@@ -30,16 +30,18 @@ public class Information {
         }
     }
 
-    public void saveNew() {
+    public void saveNew() {//存储
         BufferedOutputStream out = null;
         try {
+            //使用缓冲流，存储地址配置文件
             out = new BufferedOutputStream(new FileOutputStream(fl));
             StringBuilder stb = new StringBuilder();
             stb.append("name=" + name + "\r\n");
             stb.append("sex=" + sex + "\r\n");
             stb.append("age=" + age + "\r\n");
 
-            out.write(stb.toString().getBytes("utf-8"));
+            //设置编码---由于IDEA配置时没配好，暂设GBK
+            out.write(stb.toString().getBytes("GBK"));
 
             out.close();
         } catch (FileNotFoundException e) {
@@ -92,14 +94,17 @@ public class Information {
     {
         StringBuilder strb = new StringBuilder();
 
+        //枚举迭代
         Enumeration<String> e = (Enumeration<String>) pr.propertyNames();
 
+        //迭代
         while (e.hasMoreElements())
         {
-            strb.append(pr.getProperty((String)e.nextElement()));
+            strb.append(pr.getProperty((String)e.nextElement()) + "\r\n");
         }
 
         return strb.toString();
     }
-    
+
+
 }
