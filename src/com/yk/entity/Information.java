@@ -101,11 +101,5 @@ public class Information {
 
         return strb.toString();
     }
-
-    @Override
-    protected void finalize() throws Throwable {
-        super.finalize();
-        buf.close();
-        System.out.println("析构完成！");
-    }
+    
 }
